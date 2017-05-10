@@ -1,0 +1,17 @@
+{
+  "name": "cflint",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Morgan Dennithorne <m@d9e.me>",
+  "license": "ISC",
+  "preferGlobal": true,
+  "bin": {
+    "cflint": "bin/cflint.js"
+  },
+  "dependencies": {
+    "shelljs": "^0.7.7"
+  }
+}
