@@ -1,2 +1,2 @@
 # npm-cflint
-To install cflint with npm
+To install  CFLint with NPM
