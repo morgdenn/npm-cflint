@@ -29,7 +29,7 @@ $ cflint -folder ./
 
 When you run CFLint it will search the current directory and parent directories for a ".cflintrc" file.  If found it will automaticly use that configuration.
 
-After running `cflint --init`, you'll have a `.cflintrc` file in your directory. In it, you'll see some rules configured like this:
+After running `cflint -init`, you'll have a `.cflintrc` file in your directory. In it, you'll see some rules configured like this:
 
 ```json
 {
