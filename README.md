@@ -1,6 +1,6 @@
 # CFLint
 
-CFLint is a tool for identifying and reporting on patterns found in Coldfusion code.
+CFLint is a tool for identifying and reporting on patterns found in CFML code.
 
 This is wrapper for NPM for the original CFLint project [https://github.com/cflint/CFLint](https://github.com/cflint/CFLint)
 

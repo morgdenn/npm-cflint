@@ -1,7 +1,7 @@
 {
   "name": "cflint",
   "version": "0.0.2",
-  "description": "",
+  "description": "CFLint is a tool for identifying and reporting on patterns found in CFML code.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
