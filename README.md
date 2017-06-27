@@ -18,10 +18,11 @@ You should then setup a configuration file:
 $ cflint -init
 ```
 
-After that, you can run ESLint on any file or directory like this:
+After that, you can run CFLint on any file or directory like this:
 
 ```
 $ cflint -file yourfile.cfm
+$ cflint -folder ./
 ```
 
 ## Configuration
