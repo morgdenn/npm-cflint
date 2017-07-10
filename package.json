@@ -1,6 +1,6 @@
 {
   "name": "cflint",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "CFLint is a tool for identifying and reporting on patterns found in CFML code.",
   "repository": "https://github.com/morgdenn/npm-cflint",
   "scripts": {
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "find-config": "^1.0.0",
+    "find-java-home": "^0.2.0",
     "shelljs": "^0.7.7"
   }
 }
