@@ -1,41 +1,53 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
+
 var shell = require("shelljs");
 var findConfig = require('find-config');
+var fs = require('fs');
+var findJavaHome = require('find-java-home');
 
-// Check for the init arg.
-var initIndex = process.argv.indexOf("-init");
-if (initIndex !== -1) {
+// Make sure JAVA is installed.
+findJavaHome(function (err, home) {
+	if (err) {
+		return console.log(err);
+	}
 
-	var fs = require('fs');
+	// Check for the init arg.
+	var initIndex = process.argv.indexOf("-init");
+	if (initIndex !== -1) {
 
-	// Remove -init, it is not part of the official cflint.
-	process.argv.splice(initIndex);
+		// Get the empty configfile data.
+		var cflintrcData = fs.readFileSync(__dirname + '/../.cflintrc', 'utf8');
 
-	// Add version just so it wont output the help.
-	process.argv.push('-version');
+		// Write out the new config file.
+		fs.writeFileSync(process.cwd() + '/.cflintrc', cflintrcData);
 
-	// Get the empty configfile data.
-	var cflintrcData = fs.readFileSync(__dirname + '/../.cflintrc', 'utf8');
+		console.log(`
+			Successfully created .cflintrc file in ${process.cwd()}
+			By default there are only parsing errors, all other rules are excluded.
+			Run 'cflint -listrulegroups' to see possible rules.
+		`)
 
-	fs.writeFileSync(process.cwd() + '/.cflintrc', cflintrcData);
+		// Remove -init, it is not part of the official cflint.
+		process.argv.splice(initIndex);
 
-	console.log(`
-		Successfully created .cflintrc file in ${process.cwd()}
-		By default there are only parsing errors, all other rules are excluded.
-		Run 'cflint -listrulegroups' to see possible rules.
-	`)
-}
+		// Add version just so it wont output the help.
+		process.argv.push('-version');
 
-// Collect the arguments to resend.
-var userArgs = process.argv.slice(2).join(" ");
+	}
 
-// Find the path to the nearest config file '.cflintrc'.
-var configFilePath = findConfig('.cflintrc');
+	// If there is no configfile arg, look for the file.
+	if (process.argv.indexOf("-configfile") === -1) {
 
-// If there is a config file append it.
-if (configFilePath) {
-	userArgs += ' -configfile ' + configFilePath
-}
+		// Find the path to the nearest config file '.cflintrc'.
+		var configFilePath = findConfig('.cflintrc');
 
-// Execute cflint.
-shell.exec('java -jar ' + __dirname + '/CFLint-1.0.1-all.jar ' + userArgs);
+		// If there is a config file append it.
+		process.argv.push('-configfile ' + configFilePath);
+	}
+
+	// Collect the arguments to resend.
+	var userArgs = process.argv.slice(2).join(" ");
+
+	// Execute cflint.
+	shell.exec('java -jar ' + __dirname + '/CFLint-1.0.1-all.jar ' + userArgs);
+});

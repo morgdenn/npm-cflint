@@ -1,15 +1,16 @@
 {
   "name": "cflint",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "CFLint is a tool for identifying and reporting on patterns found in CFML code.",
+  "repository": "https://github.com/morgdenn/npm-cflint",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Morgan Dennithorne <m@d9e.me>",
-  "license": "ISC",
+  "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "cflint": "bin/cflint.js"
+    "cflint": "./bin/cflint.js"
   },
   "dependencies": {
     "find-config": "^1.0.0",
