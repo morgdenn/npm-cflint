@@ -16,7 +16,7 @@ findJavaHome(function (err, home) {
 	if (initIndex !== -1) {
 
 		// Get the empty configfile data.
-		var cflintrcData = fs.readFileSync(__dirname + '/../.cflintrc', 'utf8');
+		var cflintrcData = fs.readFileSync(__dirname + '/../.cflintrcNone', 'utf8');
 
 		// Write out the new config file.
 		fs.writeFileSync(process.cwd() + '/.cflintrc', cflintrcData);
@@ -32,7 +32,6 @@ findJavaHome(function (err, home) {
 
 		// Add version just so it wont output the help.
 		process.argv.push('-version');
-
 	}
 
 	// If there is no configfile arg, look for the file.
@@ -42,7 +41,9 @@ findJavaHome(function (err, home) {
 		var configFilePath = findConfig('.cflintrc');
 
 		// If there is a config file append it.
-		process.argv.push('-configfile ' + configFilePath);
+		if (configFilePath !== null) {
+			process.argv.push('-configfile ' + configFilePath);
+		}
 	}
 
 	// Collect the arguments to resend.
