@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const exec = require('child_process').exec;
+var shell = require("shelljs");
 var findConfig = require('find-config');
 var fs = require('fs');
 var findJavaHome = require('find-java-home');
@@ -8,7 +8,6 @@ var findJavaHome = require('find-java-home');
 // Make sure JAVA is installed.
 findJavaHome(function (err, home) {
 	if (err) {
-		console.log('JAVA not found!');
 		return console.log(err);
 	}
 
@@ -44,20 +43,12 @@ findJavaHome(function (err, home) {
 		// If there is a config file append it.
 		if (configFilePath !== null) {
 			process.argv.push('-configfile ' + configFilePath);
-			console.log('Using config file: ' + configFilePath);
 		}
 	}
 
 	// Collect the arguments to resend.
 	var userArgs = process.argv.slice(2).join(" ");
 
-	exec('java -jar ' + __dirname + '/CFLint-1.0.1-all.jar ' + userArgs, (error, stdout, stderr) => {
-		if (error) {
-			console.error('stderr', stderr);
-			throw error;
-		}
-
-		console.log('stdout', stdout);
-	});
-
+	// Execute cflint.
+	shell.exec('java -jar ' + __dirname + '/CFLint-1.0.1-all.jar ' + userArgs);
 });
