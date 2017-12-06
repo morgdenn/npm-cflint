@@ -6,7 +6,7 @@ var fs = require('fs');
 var findJavaHome = require('find-java-home');
 
 // Make sure JAVA is installed.
-findJavaHome(function (err, home) {
+findJavaHome({allowJre: true}, function (err, home) {
 	if (err) {
 		return console.log(err);
 	}
