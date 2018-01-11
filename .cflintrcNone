@@ -1,8 +1,7 @@
 {
-  "output" : [ ],
-  "rule" : [ ],
-  "excludes" : [ ],
-  "includes" : [ { } ],
+  "rule" : [],
+  "excludes" : [],
+  "includes" : [{}],
   "inheritParent" : false,
-  "inheritPlugins" : true
+  "parameters":{}
 }
