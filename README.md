@@ -33,12 +33,11 @@ After running `cflint -init`, you'll have a `.cflintrc` file in your directory. 
 
 ```json
 {
-  "output" : [ ],
   "rule" : [ ],
   "excludes" : [ ],
   "includes" : [ { } ],
   "inheritParent" : false,
-  "inheritPlugins" : true
+  "parameters":{}
 }
 ```
 
