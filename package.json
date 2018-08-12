@@ -1,6 +1,6 @@
 {
   "name": "cflint",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "description": "CFLint is a tool for identifying and reporting on patterns found in CFML code.",
   "repository": {
     "type": "git",
