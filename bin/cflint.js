@@ -50,5 +50,5 @@ findJavaHome({allowJre: true}, function (err, home) {
 	var userArgs = process.argv.slice(2).join(" ");
 
 	// Execute cflint.
-	shell.exec('java -jar ' + __dirname + '/CFLint-1.3.0-all.jar ' + userArgs);
+	shell.exec('java -jar ' + __dirname + '/CFLint-1.4.0-all.jar ' + userArgs);
 });
